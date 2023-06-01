@@ -1,0 +1,80 @@
+:root {
+  --header: #2c2d33;
+  --letters: #d9d9d9;
+  --line: #b69f64;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  color: var(--letters);
+}
+
+.header {
+  background-color: var(--header);
+
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header > nav {
+  display: flex;
+  gap: 20px;
+}
+
+.main {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.add-book-button {
+  padding: 20px 150px;
+  border: none;
+
+  color: var(--letters);
+  background-color: var(--header);
+
+  border-radius: 15px;
+}
+
+.library {
+  max-width: 1200px;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+
+  border: 1px solid red;
+}
+
+.book {
+  min-width: 350px;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+
+  background-color: var(--header);
+  border-radius: 15px;
+}
+
+.book-info {
+  margin-top: 30px;
+}
