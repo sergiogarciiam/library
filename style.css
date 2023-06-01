@@ -1,5 +1,7 @@
+/* GENERAL */
 :root {
   --header: #2c2d33;
+  --background: #eee;
   --letters: #d9d9d9;
   --line: #b69f64;
 }
@@ -11,58 +13,78 @@
 }
 
 body {
+  position: relative;
+  background-color: var(--background);
   color: var(--letters);
 }
 
+/* HEADER */
 .header {
   background-color: var(--header);
 
   width: 100%;
   margin-bottom: 20px;
-  padding: 20px;
+  padding: 20px 50px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.header > nav {
+.title {
+  font-size: 2rem;
+}
+
+.nav {
   display: flex;
   gap: 20px;
 }
 
+/* MAIN */
 .main {
   width: 100%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 50px;
 }
 
 .add-book-button {
-  padding: 20px 150px;
+  min-width: 400px;
+  padding: 10px 0;
   border: none;
+
+  font-size: 1.3rem;
+  font-weight: bold;
 
   color: var(--letters);
   background-color: var(--header);
 
+  border: 3px solid var(--header);
+
   border-radius: 15px;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-book-button:hover {
+  background-color: var(--background);
+  color: var(--header);
 }
 
 .library {
-  max-width: 1200px;
+  max-width: 1500px;
 
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 50px;
-
-  border: 1px solid red;
 }
 
 .book {
-  min-width: 350px;
+  min-width: 400px;
   padding: 20px;
 
   display: flex;
@@ -73,8 +95,43 @@ body {
 
   background-color: var(--header);
   border-radius: 15px;
+
+  border-left: 10px solid var(--line);
+
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.book:hover {
+  opacity: 0.9;
 }
 
 .book-info {
   margin-top: 30px;
+}
+
+/* MENU */
+.menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 25px;
+
+  background-color: var(--header);
+  padding: 25px;
+  border-radius: 15px;
+}
+
+.menu-buttons {
+  align-self: flex-end;
+}
+
+.hide {
+  display: none;
 }
