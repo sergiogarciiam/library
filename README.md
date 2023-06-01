@@ -1,2 +1,3 @@
-# library
-📚 Library created with html, css and js
+# Library
+
+Library created with html, css and js
