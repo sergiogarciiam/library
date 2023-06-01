@@ -24,34 +24,14 @@
             <div class="book">
                 <h2 class="book-name">Book Name</h2>
                 <p>By <span class="author-name">Author Name</span></p>
-                <p class="book-info"><span class="book-state">Reading</span> - <span
-                        class="book-pages-read">50</span>/<span class="book-pages-total">250</span></p>
+                <p>With <span class="total-pages">250</span> pages</p>
+                <div class="book-options">
+                    <button class="open-menu-button">e</button>
+                    <input class="read-check" type="checkbox">
+                </div>
+
             </div>
 
-            <div class="book">
-                <h2 class="book-name">Book Name</h2>
-                <p>By <span class="author-name">Author Name</span></p>
-                <p class="book-info"><span class="book-state">Reading</span> - <span
-                        class="book-pages-read">50</span>/<span class="book-pages-total">250</span></p>
-            </div>
-            <div class="book">
-                <h2 class="book-name">Book Name</h2>
-                <p>By <span class="author-name">Author Name</span></p>
-                <p class="book-info"><span class="book-state">Reading</span> - <span
-                        class="book-pages-read">50</span>/<span class="book-pages-total">250</span></p>
-            </div>
-            <div class="book">
-                <h2 class="book-name">Book Name</h2>
-                <p>By <span class="author-name">Author Name</span></p>
-                <p class="book-info"><span class="book-state">Reading</span> - <span
-                        class="book-pages-read">50</span>/<span class="book-pages-total">250</span></p>
-            </div>
-            <div class="book">
-                <h2 class="book-name">Book Name</h2>
-                <p>By <span class="author-name">Author Name</span></p>
-                <p class="book-info"><span class="book-state">Reading</span> - <span
-                        class="book-pages-read">50</span>/<span class="book-pages-total">250</span></p>
-            </div>
         </div>
     </main>
 
@@ -63,22 +43,19 @@
             <input id="input-book-name" name="input-book-name" type="text">
         </div>
 
-        <div class="author-name">
-            <label for="author-name">Author Name</label>
-            <input id="author-name" name="author-name" type="text">
+        <div class="input-author-name">
+            <label for="input-author-name">Author Name</label>
+            <input id="input-author-name" name="input-author-name" type="text">
         </div>
 
-        <div class="state-pages">
-            <label for="state">State</label>
-            <select id="state" name="state" form="menu">
-                <option value="to-read">To read</option>
-                <option value="reading">Reading</option>
-                <option value="read">Read</option>
-            </select>
-            <label for="pages-read">Pages Read</label>
-            <input id="pages-read" name="pages-read" type="number">
-            <label for="total-pages">Total Pages</label>
-            <input id="total-pages" name="total-pages" type="number">
+        <div class="input-total-pages">
+            <label for="input-total-pages">Total Pages</label>
+            <input id="input-total-pages" name="input-total-pages" type="number">
+        </div>
+
+        <div class="input-book-state">
+            <label for="input-book-state">Read</label>
+            <input id="input-book-state" name="input-book-state" type="checkbox">
         </div>
 
         <div class="menu-buttons">

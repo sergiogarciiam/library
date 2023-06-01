@@ -85,6 +85,8 @@ body {
 
 .book {
   min-width: 400px;
+  min-height: 165px;
+
   padding: 20px;
 
   display: flex;
@@ -97,17 +99,33 @@ body {
   border-radius: 15px;
 
   border-left: 10px solid var(--line);
+}
 
-  transition: 0.3s;
+.book-name {
+  font-size: 2em;
+}
+
+.author-name,
+.total-pages {
+  font-weight: bold;
+}
+
+.author-name {
   cursor: pointer;
 }
 
-.book:hover {
-  opacity: 0.9;
+.author-name:hover {
+  color: var(--line);
+  text-decoration: underline;
 }
 
-.book-info {
-  margin-top: 30px;
+.book-options {
+  align-self: flex-end;
+  display: none;
+}
+
+.book:hover .book-options {
+  display: inline;
 }
 
 /* MENU */
