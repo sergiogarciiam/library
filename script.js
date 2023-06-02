@@ -8,11 +8,13 @@ function addClickEvents() {
   const closeMenuButton = document.querySelector(".close-menu-button");
   const createButton = document.querySelector(".create-button");
   const updateButton = document.querySelector(".update-button");
+  const removeButton = document.querySelector(".remove-button");
 
   addBookButton.addEventListener("click", openMenuToCreate);
   closeMenuButton.addEventListener("click", closeMenu);
   createButton.addEventListener("click", createBook);
   updateButton.addEventListener("click", updateBook);
+  removeButton.addEventListener("click", removeBook);
 }
 
 // MENU FUNCTIONS
@@ -114,6 +116,7 @@ function createBookWeb(newBook) {
   // book
   const bookDiv = document.createElement("div");
   bookDiv.classList.add("book");
+  bookDiv.dataset.id = `book-${myLibrary.length - 1}`;
 
   // title
   const titleBook = document.createElement("h2");
@@ -199,4 +202,16 @@ function updateBookWeb() {
   title.textContent = myLibrary[bookID].title;
   author.textContent = myLibrary[bookID].author;
   totalPages.textContent = myLibrary[bookID].totalPages;
+}
+
+// REMOVE BOOK
+function removeBook() {
+  removeBookWeb();
+  myLibrary.pop(bookID);
+  closeMenu();
+}
+
+function removeBookWeb() {
+  const book = document.querySelector(`[data-id=book-${bookID}]`);
+  book.remove();
 }
