@@ -1,13 +1,23 @@
 const greenColor = "#92b664";
 const redColor = "#b66464";
 
-let myLibrary = [];
+let myLibrary = [
+  {
+    title: "Book Name",
+    author: "Author Name",
+    totalPages: 250,
+    isRead: false,
+    id: 2,
+  },
+];
 let totalBookID = 0;
 let idActualBook = 0;
 
+// MAIN
 addMenuEvents();
 addInitialEvents();
 
+// FUNCTIONS
 function addMenuEvents() {
   const addBookButton = document.querySelector(".add-book-button");
   const closeMenuButton = document.querySelector(".close-menu-button");
@@ -23,15 +33,10 @@ function addMenuEvents() {
 }
 
 function addInitialEvents() {
-  const openMenuButtons = document.querySelectorAll(".open-menu-button");
-  const checks = document.querySelectorAll(".read-check");
-
-  openMenuButtons.forEach((button) => {
-    button.addEventListener("click", openMenuToUpdate);
-  });
-
-  checks.forEach((check) => {
-    check.addEventListener("change", changeBookState);
+  totalBookID = myLibrary.slice(-1)[0].id + 1;
+  console.log(totalBookID);
+  myLibrary.forEach((book) => {
+    createBookWeb(book);
   });
 }
 

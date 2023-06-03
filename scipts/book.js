@@ -1,3 +1,12 @@
+// CONSTRUCTORS
+function Book(title, author, totalPages) {
+  this.title = title;
+  this.author = author;
+  this.totalPages = totalPages;
+  this.isRead = false;
+  this.id = totalBookID;
+}
+
 // CREATE BOOK
 function createBook() {
   const inputBookName = document.getElementById("input-book-name");
@@ -18,14 +27,6 @@ function createBook() {
   createBookWeb(newBook);
   totalBookID++;
   closeMenu();
-}
-
-function Book(title, author, totalPages) {
-  this.title = title;
-  this.author = author;
-  this.totalPages = totalPages;
-  this.isRead = false;
-  this.id = totalBookID;
 }
 
 function createBookWeb(newBook) {
