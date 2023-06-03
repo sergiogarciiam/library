@@ -13,9 +13,15 @@ function openMenuToCreate() {
 }
 
 function openMenuToUpdate(event) {
+  const header = document.querySelector(".header");
+  const main = document.querySelector(".main");
+
   const menu = document.querySelector(".menu");
   const updateButton = document.querySelector(".update-button");
   const removeButton = document.querySelector(".remove-button");
+
+  header.style.opacity = 0.5;
+  main.style.opacity = 0.5;
 
   menu.classList.remove("hide");
   updateButton.classList.remove("hide");

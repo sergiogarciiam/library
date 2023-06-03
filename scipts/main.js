@@ -1,3 +1,6 @@
+const greenColor = "#92b664";
+const redColor = "#b66464";
+
 let myLibrary = [];
 let totalBookID = 0;
 let idActualBook = 0;
@@ -35,6 +38,28 @@ function addInitialEvents() {
 // UTILS
 function changeBookState(e) {
   const book = e.target.parentNode.parentNode;
-  console.log("hello");
+  const bookOptions = book.querySelector("div");
+
   book.classList.toggle("read");
+
+  createAnimation(book, bookOptions);
+}
+
+function createAnimation(book, bookOptions) {
+  const read = document.createElement("p");
+
+  if (book.classList.contains("read")) {
+    read.textContent = "read";
+    read.style.color = greenColor;
+  } else {
+    read.textContent = "no read";
+    read.style.color = redColor;
+  }
+
+  read.classList.add("read-content");
+  bookOptions.appendChild(read);
+
+  setTimeout(() => {
+    read.remove();
+  }, 1500);
 }
