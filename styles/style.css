@@ -3,7 +3,8 @@
   --header: #2c2d33;
   --background: #eee;
   --letters: #d9d9d9;
-  --line: #b69f64;
+  --no-read: #b66464;
+  --read: #92b664;
 }
 
 * {
@@ -98,7 +99,11 @@ body {
   background-color: var(--header);
   border-radius: 15px;
 
-  border-left: 10px solid var(--line);
+  border-left: 10px solid var(--no-read);
+}
+
+.read {
+  border-left: 10px solid var(--read);
 }
 
 .book-name {
@@ -121,10 +126,16 @@ body {
 
 .book-options {
   align-self: flex-end;
+
+  display: flex;
+  align-items: center;
+}
+
+.open-menu-button {
   display: none;
 }
 
-.book:hover .book-options {
+.book:hover .book-options .open-menu-button {
   display: inline;
 }
 
@@ -153,4 +164,18 @@ body {
 
 .hide {
   display: none;
+}
+
+input[type="checkbox"] {
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  transform: scale(2);
+  padding: 10px;
+  margin: 10px;
+
+  accent-color: var(--read);
+  cursor: pointer;
 }

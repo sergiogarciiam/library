@@ -1,5 +1,6 @@
 let myLibrary = [];
-let bookID = 0;
+let totalBookID = 0;
+let idActualBook = 0;
 
 addClickEvents();
 
@@ -41,16 +42,16 @@ function openMenuToUpdate(event) {
   updateButton.classList.remove("hide");
   removeButton.classList.remove("hide");
 
-  bookID = event.target.dataset.id;
+  idActualBook = event.target.dataset.id;
+  const actualBook = myLibrary.find((book) => book.id == idActualBook);
 
   const inputBookName = document.getElementById("input-book-name");
   const inputAuthorName = document.getElementById("input-author-name");
   const inputTotalPages = document.getElementById("input-total-pages");
-  const inputBookState = document.getElementById("input-book-state");
-  inputBookName.value = myLibrary[bookID].title;
-  inputAuthorName.value = myLibrary[bookID].author;
-  inputTotalPages.value = myLibrary[bookID].totalPages;
-  inputBookState.checked = myLibrary[bookID].state;
+
+  inputBookName.value = actualBook.title;
+  inputAuthorName.value = actualBook.author;
+  inputTotalPages.value = actualBook.totalPages;
 }
 
 function closeMenu() {
@@ -77,11 +78,9 @@ function clearMenu() {
   const inputBookName = document.getElementById("input-book-name");
   const inputAuthorName = document.getElementById("input-author-name");
   const inputTotalPages = document.getElementById("input-total-pages");
-  const inputBookState = document.getElementById("input-book-state");
   inputBookName.value = "";
   inputAuthorName.value = "";
   inputTotalPages.value = "";
-  inputBookState.checked = false;
 }
 
 // CREATE BOOK
@@ -89,17 +88,17 @@ function createBook() {
   const inputBookName = document.getElementById("input-book-name");
   const inputAuthorName = document.getElementById("input-author-name");
   const inputTotalPages = document.getElementById("input-total-pages");
-  const inputBookState = document.getElementById("input-book-state");
 
   newBook = new Book(
     inputBookName.value,
     inputAuthorName.value,
     inputTotalPages.value,
-    inputBookState.checked
+    false
   );
 
   myLibrary.push(newBook);
   createBookWeb(newBook);
+  totalBookID++;
   closeMenu();
 }
 
@@ -108,6 +107,7 @@ function Book(title, author, totalPages, state) {
   this.author = author;
   this.totalPages = totalPages;
   this.state = state;
+  this.id = totalBookID;
 }
 
 function createBookWeb(newBook) {
@@ -116,13 +116,13 @@ function createBookWeb(newBook) {
   // book
   const bookDiv = document.createElement("div");
   bookDiv.classList.add("book");
-  bookDiv.dataset.id = `book-${myLibrary.length - 1}`;
+  bookDiv.dataset.id = `book-${newBook.id}`;
 
   // title
   const titleBook = document.createElement("h2");
   titleBook.textContent = newBook.title;
   titleBook.classList.add("book-name");
-  titleBook.dataset.id = `title-${myLibrary.length - 1}`;
+  titleBook.dataset.id = `title-${newBook.id}`;
   bookDiv.appendChild(titleBook);
 
   // author
@@ -132,7 +132,7 @@ function createBookWeb(newBook) {
   const authorName = document.createElement("span");
   authorName.textContent = newBook.author;
   authorName.classList.add("author-name");
-  authorName.dataset.id = `author-${myLibrary.length - 1}`;
+  authorName.dataset.id = `author-${newBook.id}`;
 
   authorNameParagraph.appendChild(authorName);
   bookDiv.appendChild(authorNameParagraph);
@@ -144,7 +144,7 @@ function createBookWeb(newBook) {
   const totalPages = document.createElement("span");
   totalPages.textContent = newBook.totalPages;
   totalPages.classList.add("total-pages");
-  totalPages.dataset.id = `totalPages-${myLibrary.length - 1}`;
+  totalPages.dataset.id = `totalPages-${newBook.id}`;
 
   totalPagesParagraph.appendChild(totalPages);
 
@@ -161,7 +161,7 @@ function createBookWeb(newBook) {
   const button = document.createElement("button");
   button.textContent = "e";
   button.classList.add("open-menu-button");
-  button.dataset.id = myLibrary.length - 1;
+  button.dataset.id = newBook.id;
   button.addEventListener("click", openMenuToUpdate);
   bookOptionsDiv.appendChild(button);
 
@@ -170,6 +170,7 @@ function createBookWeb(newBook) {
   state.type = "checkbox";
   state.checked = newBook.state;
   state.classList.add("read-check");
+  state.dataset.id = `state-${newBook.id}`;
   bookOptionsDiv.appendChild(state);
 
   bookDiv.appendChild(bookOptionsDiv);
@@ -183,35 +184,37 @@ function updateBook() {
   const inputBookName = document.getElementById("input-book-name");
   const inputAuthorName = document.getElementById("input-author-name");
   const inputTotalPages = document.getElementById("input-total-pages");
-  const inputBookState = document.getElementById("input-book-state");
 
-  myLibrary[bookID].title = inputBookName.value;
-  myLibrary[bookID].author = inputAuthorName.value;
-  myLibrary[bookID].totalPages = inputTotalPages.value;
-  myLibrary[bookID].state = inputBookState.checked;
+  const actualBook = myLibrary.find((book) => book.id == idActualBook);
 
-  updateBookWeb();
+  actualBook.title = inputBookName.value;
+  actualBook.author = inputAuthorName.value;
+  actualBook.totalPages = inputTotalPages.value;
+
+  updateBookWeb(actualBook);
   closeMenu();
 }
 
-function updateBookWeb() {
-  const title = document.querySelector(`[data-id=title-${bookID}]`);
-  const author = document.querySelector(`[data-id=author-${bookID}]`);
-  const totalPages = document.querySelector(`[data-id=totalPages-${bookID}]`);
+function updateBookWeb(actualBook) {
+  const title = document.querySelector(`[data-id=title-${idActualBook}]`);
+  const author = document.querySelector(`[data-id=author-${idActualBook}]`);
+  const totalPages = document.querySelector(
+    `[data-id=totalPages-${idActualBook}]`
+  );
 
-  title.textContent = myLibrary[bookID].title;
-  author.textContent = myLibrary[bookID].author;
-  totalPages.textContent = myLibrary[bookID].totalPages;
+  title.textContent = actualBook.title;
+  author.textContent = actualBook.author;
+  totalPages.textContent = actualBook.totalPages;
 }
 
 // REMOVE BOOK
 function removeBook() {
   removeBookWeb();
-  myLibrary.pop(bookID);
+  miLibrary = myLibrary.filter((book) => book.id != idActualBook);
   closeMenu();
 }
 
 function removeBookWeb() {
-  const book = document.querySelector(`[data-id=book-${bookID}]`);
+  const book = document.querySelector(`[data-id=book-${idActualBook}]`);
   book.remove();
 }
