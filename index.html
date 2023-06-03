@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
 
+    <link rel="stylesheet" href="fontawesome/css/brands.min.css">
+    <link rel="stylesheet" href="fontawesome/css/solid.min.css">
+    <link rel="stylesheet" href="fontawesome/css/fontawesome.min.css">
+
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/animation.css">
 
@@ -20,8 +24,9 @@
     <header class="header">
         <h1 class="title">Library</h1>
         <nav class="nav">
-            <p>a</p>
-            <p>a</p>
+            <i class="fa-solid fa-moon change-theme-button"></i>
+            <a href="https://github.com/sergiogarciiam/library" class="github-link" target="_blank"><i
+                    class="fa-brands fa-github"></i></a>
         </nav>
     </header>
     <main class="main">
@@ -29,8 +34,10 @@
         <div class="library"></div>
     </main>
 
+    <div class="blocker hide"></div>
+
     <form class="menu hide" id="menu">
-        <button class="close-menu-button" type="button">x</button>
+        <button class="close-menu-button" type="button"><i class="fa-solid fa-xmark"></i></button>
 
         <div class="input-container input-book-name">
             <label for="input-book-name">*Book Name</label>
@@ -54,6 +61,8 @@
         </div>
 
     </form>
+
+
 </body>
 
 </html>

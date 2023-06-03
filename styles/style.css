@@ -40,6 +40,24 @@ body {
 .nav {
   display: flex;
   gap: 20px;
+  align-items: center;
+}
+
+.change-theme-button,
+.github-link {
+  font-size: 2rem;
+  color: var(--letters);
+  cursor: pointer;
+}
+
+.change-theme-button:hover,
+.github-link:hover {
+  opacity: 0.7;
+}
+
+.change-theme-button > i {
+  font-size: 2rem;
+  color: var(--letters);
 }
 
 /* MAIN */
@@ -53,7 +71,7 @@ body {
 }
 
 .add-book-button {
-  min-width: 400px;
+  min-width: 300px;
   padding: 10px 0;
   border: none;
 
@@ -86,7 +104,7 @@ body {
 }
 
 .book {
-  min-width: 400px;
+  min-width: 300px;
   min-height: 165px;
 
   padding: 20px;
@@ -116,7 +134,7 @@ body {
   font-weight: bold;
 }
 
-/* book footer */
+/* book options */
 .book-options {
   width: 100%;
   position: relative;
@@ -124,6 +142,7 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  gap: 10px;
 }
 
 .read-check {
@@ -139,8 +158,22 @@ body {
   cursor: pointer;
 }
 
+.close-menu-button,
 .open-menu-button {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid var(--letters);
+
+  color: var(--letters);
+  background-color: var(--header);
+  cursor: pointer;
+
   display: none;
+}
+
+.close-menu-button:hover,
+.open-menu-button:hover {
+  opacity: 0.7;
 }
 
 .book:hover .book-options .open-menu-button {
@@ -171,11 +204,10 @@ body {
 }
 
 .close-menu-button {
-  margin-bottom: -30px;
-}
-
-.hide {
-  display: none;
+  margin-bottom: -50px;
+  display: inline;
+  border: none;
+  font-size: 1.5rem;
 }
 
 .input-container {
@@ -228,4 +260,16 @@ body {
 .update-button:hover,
 .remove-button:hover {
   opacity: 0.7;
+}
+
+/* BLOCKER */
+.blocker {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 10vh;
+}
+
+.hide {
+  display: none;
 }

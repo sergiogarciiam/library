@@ -77,12 +77,13 @@ function createBookWeb(newBook) {
   bookOptionsDiv.classList.add("book-options");
 
   // button
-  const button = document.createElement("button");
-  button.textContent = "e";
-  button.classList.add("open-menu-button");
-  button.dataset.id = `button-${newBook.id}`;
-  button.addEventListener("click", openMenuToUpdate);
-  bookOptionsDiv.appendChild(button);
+  const icon = document.createElement("i");
+  icon.classList.add("open-menu-button");
+  icon.dataset.id = `icon-${newBook.id}`;
+  icon.classList.add("fa-solid");
+  icon.classList.add("fa-pencil");
+  icon.addEventListener("click", openMenuToUpdate);
+  bookOptionsDiv.appendChild(icon);
 
   // state
   const state = document.createElement("input");
