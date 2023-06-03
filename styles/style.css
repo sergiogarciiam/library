@@ -1,8 +1,21 @@
 /* GENERAL */
-:root {
+:root.light {
   --header: #2c2d33;
   --background: #eee;
   --letters: #d9d9d9;
+
+  --new-book-hover: #2c2d33;
+
+  --no-read: #b66464;
+  --read: #92b664;
+}
+
+:root.dark {
+  --header: #2c2d33;
+  --background: #222;
+  --letters: #d9d9d9;
+
+  --new-book-hover: #d9d9d9;
 
   --no-read: #b66464;
   --read: #92b664;
@@ -91,7 +104,8 @@ body {
 
 .add-book-button:hover {
   background-color: var(--background);
-  color: var(--header);
+  color: var(--new-book-hover);
+  border: 3px solid var(--new-book-hover);
 }
 
 .library {
@@ -187,7 +201,7 @@ body {
   left: 50%;
   transform: translate(-50%, -23%);
 
-  min-width: 400px;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;

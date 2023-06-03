@@ -33,8 +33,10 @@ function addMenuEvents() {
 }
 
 function addInitialEvents() {
+  const changeThemeButton = document.querySelector(".change-theme-button");
+  changeThemeButton.addEventListener("click", changeTheme);
+
   totalBookID = myLibrary.slice(-1)[0].id + 1;
-  console.log(totalBookID);
   myLibrary.forEach((book) => {
     createBookWeb(book);
   });
@@ -46,7 +48,6 @@ function changeBookState(event) {
   const bookOptions = book.querySelector("div");
 
   book.classList.toggle("read");
-
   createAnimationAndChange(book, bookOptions);
 }
 
@@ -70,4 +71,19 @@ function createAnimationAndChange(bookDiv, bookOptions) {
   setTimeout(() => {
     read.remove();
   }, 1500);
+}
+
+function changeTheme(event) {
+  const root = document.documentElement;
+  const newTheme = root.className === "dark" ? "light" : "dark";
+  root.className = newTheme;
+
+  const button = event.target;
+  if (newTheme === "dark") {
+    button.classList.remove("fa-moon");
+    button.classList.add("fa-sun");
+  } else {
+    button.classList.remove("fa-sun");
+    button.classList.add("fa-moon");
+  }
 }
