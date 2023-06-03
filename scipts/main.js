@@ -36,24 +36,27 @@ function addInitialEvents() {
 }
 
 // UTILS
-function changeBookState(e) {
-  const book = e.target.parentNode.parentNode;
+function changeBookState(event) {
+  const book = event.target.parentNode.parentNode;
   const bookOptions = book.querySelector("div");
 
   book.classList.toggle("read");
 
-  createAnimation(book, bookOptions);
+  createAnimationAndChange(book, bookOptions);
 }
 
-function createAnimation(book, bookOptions) {
+function createAnimationAndChange(bookDiv, bookOptions) {
+  const bookToChange = myLibrary.find((book) => book.id == bookDiv.dataset.id);
   const read = document.createElement("p");
 
-  if (book.classList.contains("read")) {
+  if (bookDiv.classList.contains("read")) {
     read.textContent = "read";
     read.style.color = greenColor;
+    bookToChange.isRead = true;
   } else {
     read.textContent = "no read";
     read.style.color = redColor;
+    bookToChange.isRead = false;
   }
 
   read.classList.add("read-content");

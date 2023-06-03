@@ -7,8 +7,7 @@ function createBook() {
   newBook = new Book(
     inputBookName.value,
     inputAuthorName.value,
-    inputTotalPages.value,
-    false
+    inputTotalPages.value
   );
 
   myLibrary.push(newBook);
@@ -17,11 +16,11 @@ function createBook() {
   closeMenu();
 }
 
-function Book(title, author, totalPages, state) {
+function Book(title, author, totalPages) {
   this.title = title;
   this.author = author;
   this.totalPages = totalPages;
-  this.state = state;
+  this.isRead = false;
   this.id = totalBookID;
 }
 
@@ -31,7 +30,7 @@ function createBookWeb(newBook) {
   // book
   const bookDiv = document.createElement("div");
   bookDiv.classList.add("book");
-  bookDiv.dataset.id = `book-${newBook.id}`;
+  bookDiv.dataset.id = `${newBook.id}`;
 
   // title
   const titleBook = document.createElement("h2");
@@ -76,7 +75,7 @@ function createBookWeb(newBook) {
   const button = document.createElement("button");
   button.textContent = "e";
   button.classList.add("open-menu-button");
-  button.dataset.id = newBook.id;
+  button.dataset.id = `button-${newBook.id}`;
   button.addEventListener("click", openMenuToUpdate);
   bookOptionsDiv.appendChild(button);
 
@@ -100,7 +99,6 @@ function updateBook() {
   const inputBookName = document.getElementById("input-book-name");
   const inputAuthorName = document.getElementById("input-author-name");
   const inputTotalPages = document.getElementById("input-total-pages");
-
   const actualBook = myLibrary.find((book) => book.id == idActualBook);
 
   actualBook.title = inputBookName.value;
@@ -126,11 +124,11 @@ function updateBookWeb(actualBook) {
 // REMOVE BOOK
 function removeBook() {
   removeBookWeb();
-  miLibrary = myLibrary.filter((book) => book.id != idActualBook);
+  myLibrary = myLibrary.filter((book) => book.id != idActualBook);
   closeMenu();
 }
 
 function removeBookWeb() {
-  const book = document.querySelector(`[data-id=book-${idActualBook}]`);
+  const book = document.querySelector(`[data-id="${idActualBook}"]`);
   book.remove();
 }
