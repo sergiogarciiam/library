@@ -61,4 +61,7 @@ function clearMenu() {
   inputBookName.value = "";
   inputAuthorName.value = "";
   inputTotalPages.value = "";
+  inputBookName.style.borderColor = "";
+  inputAuthorName.style.borderColor = "";
+  inputTotalPages.style.borderColor = "";
 }

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/animation.css">
 
+    <script src="./scipts/validation.js" defer="defer"></script>
     <script src="./scipts/menuFunctions.js" defer="defer"></script>
     <script src="./scipts/book.js" defer="defer"></script>
     <script src="./scipts/main.js" defer="defer"></script>
@@ -43,18 +44,18 @@
     <form class="menu hide" id="menu">
         <button class="close-menu-button" type="button">x</button>
 
-        <div class="input-book-name">
-            <label for="input-book-name">Book Name</label>
+        <div class="input-container input-book-name">
+            <label for="input-book-name">*Book Name</label>
             <input id="input-book-name" name="input-book-name" type="text">
         </div>
 
-        <div class="input-author-name">
-            <label for="input-author-name">Author Name</label>
+        <div class="input-container input-author-name">
+            <label for="input-author-name">*Author Name</label>
             <input id="input-author-name" name="input-author-name" type="text">
         </div>
 
-        <div class="input-total-pages">
-            <label for="input-total-pages">Total Pages</label>
+        <div class="input-container input-total-pages">
+            <label for="input-total-pages">*Total Pages</label>
             <input id="input-total-pages" name="input-total-pages" type="number">
         </div>
 

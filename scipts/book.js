@@ -4,6 +4,10 @@ function createBook() {
   const inputAuthorName = document.getElementById("input-author-name");
   const inputTotalPages = document.getElementById("input-total-pages");
 
+  if (!isValidInputs(inputBookName, inputAuthorName, inputTotalPages)) {
+    return;
+  }
+
   newBook = new Book(
     inputBookName.value,
     inputAuthorName.value,
@@ -99,6 +103,11 @@ function updateBook() {
   const inputBookName = document.getElementById("input-book-name");
   const inputAuthorName = document.getElementById("input-author-name");
   const inputTotalPages = document.getElementById("input-total-pages");
+
+  if (!isValidInputs(inputBookName, inputAuthorName, inputTotalPages)) {
+    return;
+  }
+
   const actualBook = myLibrary.find((book) => book.id == idActualBook);
 
   actualBook.title = inputBookName.value;

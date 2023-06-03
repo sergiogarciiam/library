@@ -152,13 +152,13 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -20%);
 
   min-width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 25px;
+  gap: 40px;
 
   background-color: var(--header);
   padding: 25px;
@@ -170,6 +170,62 @@ body {
   align-self: flex-end;
 }
 
+.close-menu-button {
+  margin-bottom: -30px;
+}
+
 .hide {
   display: none;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input-container > label {
+  font-weight: bold;
+}
+
+.input-container > input {
+  padding: 8px 15px;
+
+  background-color: var(--header);
+  color: var(--letters);
+
+  font-size: 1.3em;
+  font-weight: bold;
+
+  border-radius: 20px;
+  box-shadow: 1px 1px 1px var(--letters);
+}
+
+/* buttons */
+.create-button,
+.update-button,
+.remove-button {
+  padding: 5px 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+
+  background-color: var(--read);
+  color: var(--header);
+
+  border-radius: 10px;
+  border: none;
+
+  cursor: pointer;
+  transition: opacity 300ms;
+}
+
+.remove-button {
+  background-color: var(--no-read);
+}
+
+.menu input:hover,
+.create-button:hover,
+.update-button:hover,
+.remove-button:hover {
+  opacity: 0.7;
 }
