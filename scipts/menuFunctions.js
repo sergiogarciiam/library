@@ -70,4 +70,13 @@ function clearMenu() {
   inputBookName.style.borderColor = "";
   inputAuthorName.style.borderColor = "";
   inputTotalPages.style.borderColor = "";
+  clearIcon(inputBookName);
+  clearIcon(inputAuthorName);
+  clearIcon(inputTotalPages);
+}
+
+function clearIcon(input) {
+  const icon = input.parentNode.children[1];
+  icon.classList.remove("fa-check");
+  icon.classList.remove("fa-xmark");
 }
