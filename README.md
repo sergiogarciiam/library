@@ -10,8 +10,8 @@ The project is from [The Odin Project](https://www.theodinproject.com/lessons/no
 
 - It's a library which allows save, update and remove books
 - Each book has a title, an author and a number of pages
-- Also it allows to change the state of the book between "read" and "no read"
-- It's has a light and a black theme
+- Also, it allows changing the state of the book between "read" and "no read"
+- It has a changeable light/black theme
 - It's support responsive design
 
 ### Tools and technology
