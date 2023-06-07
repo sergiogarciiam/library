@@ -1,0 +1,38 @@
+.header {
+  background-color: var(--header);
+
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 20px 50px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.change-theme-button,
+.github-link {
+  font-size: 2rem;
+  color: var(--letters);
+  cursor: pointer;
+}
+
+.change-theme-button:hover,
+.github-link:hover {
+  opacity: 0.7;
+}
+
+.change-theme-button > i {
+  font-size: 2rem;
+  color: var(--letters);
+}

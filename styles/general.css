@@ -1,0 +1,35 @@
+:root.light {
+  --header: #2c2d33;
+  --background: #eee;
+  --letters: #d9d9d9;
+
+  --new-book-hover: #2c2d33;
+
+  --no-read: #b66464;
+  --read: #92b664;
+}
+
+:root.dark {
+  --header: #2c2d33;
+  --background: #222;
+  --letters: #d9d9d9;
+
+  --new-book-hover: #d9d9d9;
+
+  --no-read: #b66464;
+  --read: #92b664;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  position: relative;
+  height: 100vh;
+
+  background-color: var(--background);
+  color: var(--letters);
+}

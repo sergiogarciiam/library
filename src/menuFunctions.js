@@ -27,6 +27,10 @@ function openMenuToUpdate(event) {
   updateButton.classList.remove("hide");
   removeButton.classList.remove("hide");
 
+  fillInputs();
+}
+
+function fillInputs() {
   idActualBook = event.target.parentNode.parentNode.dataset.id;
 
   const actualBook = myLibrary.find((book) => book.id == idActualBook);
@@ -70,6 +74,7 @@ function clearMenu() {
   inputBookName.style.borderColor = "";
   inputAuthorName.style.borderColor = "";
   inputTotalPages.style.borderColor = "";
+
   clearIcon(inputBookName);
   clearIcon(inputAuthorName);
   clearIcon(inputTotalPages);
@@ -77,6 +82,7 @@ function clearMenu() {
 
 function clearIcon(input) {
   const icon = input.parentNode.children[1];
+
   icon.classList.remove("fa-check");
   icon.classList.remove("fa-xmark");
 }

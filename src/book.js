@@ -1,4 +1,4 @@
-// CONSTRUCTORS
+// CONSTRUCTOR
 function Book(title, author, totalPages) {
   this.title = title;
   this.author = author;
@@ -31,72 +31,65 @@ function createBook() {
 
 function createBookWeb(newBook) {
   const library = document.querySelector(".library");
+  const bookDiv = document.createElement("div");
+  const titleBook = document.createElement("h2");
+  const authorNameParagraph = document.createElement("p");
+  const authorName = document.createElement("span");
+  const totalPagesParagraph = document.createElement("p");
+  const totalPages = document.createElement("span");
+  const pagesText = document.createTextNode(" pages");
+  const bookOptionsDiv = document.createElement("div");
+  const icon = document.createElement("i");
+  const state = document.createElement("input");
 
   // book
-  const bookDiv = document.createElement("div");
   bookDiv.classList.add("book");
   bookDiv.dataset.id = `${newBook.id}`;
 
   // title
-  const titleBook = document.createElement("h2");
   titleBook.textContent = newBook.title;
   titleBook.classList.add("book-name");
   titleBook.dataset.id = `title-${newBook.id}`;
-  bookDiv.appendChild(titleBook);
 
   // author
-  const authorNameParagraph = document.createElement("p");
   authorNameParagraph.textContent = "By ";
-
-  const authorName = document.createElement("span");
   authorName.textContent = newBook.author;
   authorName.classList.add("author-name");
   authorName.dataset.id = `author-${newBook.id}`;
 
-  authorNameParagraph.appendChild(authorName);
-  bookDiv.appendChild(authorNameParagraph);
-
   // pages
-  const totalPagesParagraph = document.createElement("p");
   totalPagesParagraph.textContent = "With ";
-
-  const totalPages = document.createElement("span");
   totalPages.textContent = newBook.totalPages;
   totalPages.classList.add("total-pages");
   totalPages.dataset.id = `totalPages-${newBook.id}`;
 
-  totalPagesParagraph.appendChild(totalPages);
-
-  const pagesText = document.createTextNode(" pages");
-  totalPagesParagraph.appendChild(pagesText);
-
-  bookDiv.appendChild(totalPagesParagraph);
-
   // book options
-  const bookOptionsDiv = document.createElement("div");
   bookOptionsDiv.classList.add("book-options");
 
   // button
-  const icon = document.createElement("i");
   icon.classList.add("open-menu-button");
   icon.dataset.id = `icon-${newBook.id}`;
   icon.classList.add("fa-solid");
   icon.classList.add("fa-pencil");
   icon.addEventListener("click", openMenuToUpdate);
-  bookOptionsDiv.appendChild(icon);
 
   // state
-  const state = document.createElement("input");
   state.type = "checkbox";
   state.checked = newBook.state;
   state.classList.add("read-check");
   state.dataset.id = `state-${newBook.id}`;
   state.addEventListener("change", changeBookState);
+
+  // appends
+  bookDiv.appendChild(titleBook);
+  authorNameParagraph.appendChild(authorName);
+  bookDiv.appendChild(authorNameParagraph);
+  totalPagesParagraph.appendChild(totalPages);
+  totalPagesParagraph.appendChild(pagesText);
+  bookDiv.appendChild(totalPagesParagraph);
+  bookOptionsDiv.appendChild(icon);
   bookOptionsDiv.appendChild(state);
-
   bookDiv.appendChild(bookOptionsDiv);
-
-  // append
   library.appendChild(bookDiv);
 }
 
