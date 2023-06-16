@@ -12,6 +12,22 @@ class Library {
     this.totalBookID = this.myBooks.slice(-1)[0].id + 1;
     this.idActualBook = 0;
   }
+
+  getBook() {
+    const actualBook = this.myBooks.find(
+      (book) => book.id == this.idActualBook
+    );
+    return actualBook;
+  }
+
+  addBook(newBook) {
+    this.myBooks.push(newBook);
+    this.totalBookID++;
+  }
+
+  removeBook() {
+    this.myBooks = this.myBooks.filter((book) => book.id != this.idActualBook);
+  }
 }
 
 class Book {
@@ -72,23 +88,20 @@ const libraryDisplayController = (() => {
   const greenColor = "#92b664";
   const redColor = "#b66464";
 
+  // MAIN FUNCTIONS
   const createLibrary = () => {
     library = new Library();
-
     library.myBooks.forEach((book) => {
       createBookWeb(book);
     });
   };
 
-  const getActualBook = (event) => {
+  const setActualBookAndGet = (event) => {
     library.idActualBook = event.target.parentNode.parentNode.dataset.id;
-    const actualBook = library.myBooks.find(
-      (book) => book.id == library.idActualBook
-    );
+    const actualBook = library.getBook();
     return actualBook;
   };
 
-  // CREATE BOOK
   const createBook = () => {
     const inputBookName = document.getElementById("input-book-name");
     const inputAuthorName = document.getElementById("input-author-name");
@@ -105,12 +118,36 @@ const libraryDisplayController = (() => {
       library.totalBookID
     );
 
-    library.myBooks.push(newBook);
+    library.addBook(newBook);
     createBookWeb(newBook);
-    library.totalBookID++;
     menuDisplayController.closeMenu();
   };
 
+  const updateBook = () => {
+    const inputBookName = document.getElementById("input-book-name");
+    const inputAuthorName = document.getElementById("input-author-name");
+    const inputTotalPages = document.getElementById("input-total-pages");
+
+    if (!isValidInputs(inputBookName, inputAuthorName, inputTotalPages)) {
+      return;
+    }
+
+    const actualBook = library.getBook();
+    actualBook.title = inputBookName.value;
+    actualBook.author = inputAuthorName.value;
+    actualBook.totalPages = inputTotalPages.value;
+
+    updateBookWeb(actualBook);
+    menuDisplayController.closeMenu();
+  };
+
+  const removeBook = () => {
+    removeBookWeb();
+    library.removeBook();
+    menuDisplayController.closeMenu();
+  };
+
+  // HELP FUNCTIONS
   function createBookWeb(newBook) {
     const library = document.querySelector(".library");
     const bookDiv = document.createElement("div");
@@ -175,28 +212,6 @@ const libraryDisplayController = (() => {
     library.appendChild(bookDiv);
   }
 
-  // UPDATE BOOK
-  const updateBook = () => {
-    const inputBookName = document.getElementById("input-book-name");
-    const inputAuthorName = document.getElementById("input-author-name");
-    const inputTotalPages = document.getElementById("input-total-pages");
-
-    if (!isValidInputs(inputBookName, inputAuthorName, inputTotalPages)) {
-      return;
-    }
-
-    const actualBook = library.myBooks.find(
-      (book) => book.id == library.idActualBook
-    );
-
-    actualBook.title = inputBookName.value;
-    actualBook.author = inputAuthorName.value;
-    actualBook.totalPages = inputTotalPages.value;
-
-    updateBookWeb(actualBook);
-    menuDisplayController.closeMenu();
-  };
-
   function updateBookWeb(actualBook) {
     const title = document.querySelector(
       `[data-id=title-${library.idActualBook}]`
@@ -212,15 +227,6 @@ const libraryDisplayController = (() => {
     author.textContent = actualBook.author;
     totalPages.textContent = actualBook.totalPages;
   }
-
-  // REMOVE BOOK
-  const removeBook = () => {
-    removeBookWeb();
-    library.myBooks = library.myBooks.filter(
-      (book) => book.id != library.idActualBook
-    );
-    menuDisplayController.closeMenu();
-  };
 
   function removeBookWeb() {
     const book = document.querySelector(`[data-id="${library.idActualBook}"]`);
@@ -286,7 +292,13 @@ const libraryDisplayController = (() => {
     }, 1500);
   }
 
-  return { createLibrary, getActualBook, createBook, updateBook, removeBook };
+  return {
+    createLibrary,
+    setActualBookAndGet,
+    createBook,
+    updateBook,
+    removeBook,
+  };
 })();
 
 const menuDisplayController = (() => {
@@ -343,7 +355,7 @@ const menuDisplayController = (() => {
   };
 
   function fillInputs(event) {
-    const actualBook = libraryDisplayController.getActualBook(event);
+    const actualBook = libraryDisplayController.setActualBookAndGet(event);
     const inputBookName = document.getElementById("input-book-name");
     const inputAuthorName = document.getElementById("input-author-name");
     const inputTotalPages = document.getElementById("input-total-pages");
