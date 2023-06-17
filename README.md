@@ -28,7 +28,7 @@ The project is from [The Odin Project](https://www.theodinproject.com/lessons/no
 
 - Basic "change theme" functionality
 - Animations to change the state of the book
-- Basic use of objects in JavaScript
+- Basic use of objects in JavaScript (**Update**: Refactor code using class and factories)
 
 ## Screenshots
 
