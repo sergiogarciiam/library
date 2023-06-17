@@ -42,6 +42,11 @@ The project is from [The Odin Project](https://www.theodinproject.com/lessons/no
 
 ![menu to create book](./images/menu-create.png)
 
+## Acknowledgements
+
+- Project idea by [The Odin Project](https://www.theodinproject.com/)
+- Web icon from [favicon](https://favicon.io/)
+
 ## Author
 
 [Sergio García](https://github.com/sergiogarciiam)
